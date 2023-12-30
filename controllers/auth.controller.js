@@ -31,7 +31,7 @@ export const signin = async (req, res, next) => {
     const { password: hashPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 360000); // 1 hour
     res
-      .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
+      .cookie("access_token", token, { httpOnly: true, expires: expiryDate, secure: true, domain: "https://mern-auth-servers.onrender.com"  })
       .status(200)
       .json(rest);
   } catch (err) {
@@ -47,7 +47,7 @@ export const google = async (req, res, next) => {
       const { password: hashPassword, ...rest } = users._doc;
       const expiryDate = new Date(Date.now() + 360000); // 1 hour
       res
-        .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
+        .cookie("access_token", token, { httpOnly: true, expires: expiryDate ,secure: true, domain: "https://mern-auth-servers.onrender.com"})
         .status(200)
         .json(rest);
     } else {
