@@ -12,12 +12,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "*", "https://mernauths.netlify.app/"],
+    origin: ["http://localhost:5173", "https://mernauths.netlify.app"],
     credentials: true,
   })
-); 
+);
+
 
 mongoose
   .connect(process.env.MONGO)
